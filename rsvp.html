@@ -1,98 +1,142 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Chloe & Andrew's Wedding</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
-		<div id="page-wrapper">
+  <head>
+    <title>Chloe & Andrew's Wedding</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+      form {
+        max-width: 600px;
+        margin: auto;
+      }
+      label {
+        font-weight: bold;
+      }
+      input, select, textarea {
+        width: 100%;
+        padding: 0.6em;
+        margin: 0.4em 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background: #a94442;
+        color: #fff;
+        padding: 0.7em 1.2em;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #922d2d;
+      }
+      #successMsg {
+        display: none;
+        margin-top: 1em;
+        color: green;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body class="is-preload">
+    <div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="navbar"></div>
+      <!-- Header -->
+      <div id="navbar"></div>
 
-			<!-- Main -->
-				<section id="main" class="container">
-					<header>
-						<h2>RSVP</h2>
-						<p>Please fill out the following information and submit.</p>
-					</header>
-					<div class="box">
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-						<h3>This is a subheading</h3>
-						<p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
-						<div class="row">
-							<div class="row-6 row-12-mobilep">
-								<h3>And now a subheading</h3>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
-							<div class="row-6 row-12-mobilep">
-								<h3>And another subheading</h3>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
-						</div>
-					</div>
-				</section>
+      <!-- Main -->
+      <section id="main" class="container">
+        <header>
+          <h2>RSVP</h2>
+          <p>Please fill out the form below to let us know if you’ll be joining us.</p>
+        </header>
 
-			<!-- Footer -->
-				<div id="footerbar"></div>
+        <div class="box">
+          <form id="rsvpForm">
+            <label for="name">Your Name(s)</label>
+            <input type="text" id="name" name="name" required />
 
-		</div>
+            <label for="guests">Number of Guests</label>
+            <input type="number" id="guests" name="guests" min="1" required />
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-			fetch('navbar.html')
-				.then(response => response.text())
-				.then(data => {
-				document.getElementById('navbar').innerHTML = data;
-				// Re-initialize dropotron after navbar is inserted
-				if (window.jQuery && typeof jQuery.fn.dropotron !== 'undefined') {
-					jQuery('#nav > ul').dropotron({
-					alignment: 'center'
-					});
-				}
-				});
-		</script>
-		<script>
-			fetch('footer.html')
-			.then(response => response.text())
-			.then(data => document.getElementById('footerbar').innerHTML = data);
-		</script>
-		<script>
-			const form = document.getElementById("rsvpForm");
-			const successMsg = document.getElementById("successMsg");
+            <label for="attending">Will you be attending?</label>
+            <select id="attending" name="attending" required>
+              <option value="">-- Please Select --</option>
+              <option value="Yes">Yes, I’ll be there!</option>
+              <option value="No">Sorry, can’t make it</option>
+            </select>
 
-			form.addEventListener("submit", function(event) {
-				event.preventDefault();
+            <label for="message">Message for the couple (optional)</label>
+            <textarea id="message" name="message" rows="4"></textarea>
 
-				const data = {
-				name: document.getElementById("name").value,
-				guests: document.getElementById("guests").value,
-				attending: document.getElementById("attending").value,
-				message: document.getElementById("message").value
-				};
+            <button type="submit">Submit RSVP</button>
+          </form>
+          <p id="successMsg">🎉 Thank you! Your RSVP has been recorded.</p>
+        </div>
+      </section>
 
-				fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
-				method: "POST",
-				body: JSON.stringify(data),
-				headers: { "Content-Type": "application/json" }
-				})
-				.then(response => response.text())
-				.then(text => {
-				console.log("Server response:", text);
-				successMsg.style.display = "block";
-				form.reset();
-				})
-				.catch(error => console.error("Error!", error));
-			});
-		</script>
-	</body>
+      <!-- Footer -->
+      <div id="footerbar"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Load Navbar -->
+    <script>
+      fetch('navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar').innerHTML = data;
+          if (window.jQuery && typeof jQuery.fn.dropotron !== 'undefined') {
+            jQuery('#nav > ul').dropotron({ alignment: 'center' });
+          }
+        });
+    </script>
+
+    <!-- Load Footer -->
+    <script>
+      fetch('footer.html')
+        .then(response => response.text())
+        .then(data => document.getElementById('footerbar').innerHTML = data);
+    </script>
+
+    <!-- RSVP Submission Script -->
+    <script>
+      const form = document.getElementById("rsvpForm");
+      const successMsg = document.getElementById("successMsg");
+
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const data = {
+          name: document.getElementById("name").value,
+          guests: document.getElementById("guests").value,
+          attending: document.getElementById("attending").value,
+          message: document.getElementById("message").value
+        };
+
+        fetch("https://script.google.com/macros/s/AKfycbxfgee856ddRkB4QT3r5BCG5l1vTs984keSCmw_hiJ746cnRzqYsAIEauQf_VKdBljQ/exec", {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { "Content-Type": "application/json" }
+        })
+        .then(response => response.text())
+        .then(text => {
+          console.log("Server response:", text);
+          successMsg.style.display = "block";
+          form.reset();
+        })
+        .catch(error => console.error("Error!", error));
+      });
+    </script>
+  </body>
 </html>

@@ -54,26 +54,27 @@
         </header>
 
         <div class="box">
-          <form id="rsvpForm">
-            <label for="name">Your Name(s)</label>
-            <input type="text" id="name" name="name" required />
+          	<form id="rsvpForm">
+				<label for="name">Your Name(s)</label>
+				<input type="text" id="name" name="name" required>
 
-            <label for="guests">Number of Guests</label>
-            <input type="number" id="guests" name="guests" min="1" required />
+				<label for="guests">Number of Guests</label>
+				<input type="number" id="guests" name="guests" min="1" required>
 
-            <label for="attending">Will you be attending?</label>
-            <select id="attending" name="attending" required>
-              <option value="">-- Please Select --</option>
-              <option value="Yes">Yes, I’ll be there!</option>
-              <option value="No">Sorry, can’t make it</option>
-            </select>
+				<label for="attending">Will you attend?</label>
+				<select id="attending" name="attending" required>
+					<option value="">Select</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>
+				</select>
 
-            <label for="message">Message for the couple (optional)</label>
-            <textarea id="message" name="message" rows="4"></textarea>
+				<label for="message">Message (optional)</label>
+				<textarea id="message" name="message"></textarea>
 
-            <button type="submit">Submit RSVP</button>
-          </form>
-          <p id="successMsg">🎉 Thank you! Your RSVP has been recorded.</p>
+				<button type="submit">Submit RSVP</button>
+			</form>
+
+			<p id="successMsg" style="display:none;color:green;">Thank you! RSVP recorded.</p>
         </div>
       </section>
 
@@ -111,32 +112,40 @@
 
     <!-- RSVP Submission Script -->
     <script>
-      const form = document.getElementById("rsvpForm");
-      const successMsg = document.getElementById("successMsg");
+		const form = document.getElementById('rsvpForm');
+		const successMsg = document.getElementById('successMsg');
 
-      form.addEventListener("submit", function(event) {
-        event.preventDefault();
+		// Replace this with your SheetDB API URL
+		const SHEETDB_URL = 'https://sheetdb.io/api/v1/1fw56c0buukmi';
 
-        const data = {
-          name: document.getElementById("name").value,
-          guests: document.getElementById("guests").value,
-          attending: document.getElementById("attending").value,
-          message: document.getElementById("message").value
-        };
+		form.addEventListener('submit', function(e) {
+		e.preventDefault();
 
-        fetch("https://script.google.com/macros/s/AKfycbxfgee856ddRkB4QT3r5BCG5l1vTs984keSCmw_hiJ746cnRzqYsAIEauQf_VKdBljQ/exec", {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: { "Content-Type": "application/json" }
-        })
-        .then(response => response.text())
-        .then(text => {
-          console.log("Server response:", text);
-          successMsg.style.display = "block";
-          form.reset();
-        })
-        .catch(error => console.error("Error!", error));
-      });
-    </script>
+		const data = {
+			data: [{
+			Name: document.getElementById('name').value,
+			Guests: document.getElementById('guests').value,
+			Attending: document.getElementById('attending').value,
+			Message: document.getElementById('message').value
+			}]
+		};
+
+		fetch(SHEETDB_URL, {
+			method: 'POST',
+			body: JSON.stringify(data),
+			headers: { 'Content-Type': 'application/json' }
+		})
+		.then(res => res.json())
+		.then(res => {
+			successMsg.style.display = 'block';
+			form.reset();
+			console.log('RSVP recorded:', res);
+		})
+		.catch(err => {
+			console.error('Error submitting RSVP:', err);
+			alert('Sorry, there was an error. Please try again later.');
+		});
+		});
+	</script>
   </body>
 </html>

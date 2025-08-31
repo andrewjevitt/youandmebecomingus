@@ -123,12 +123,14 @@
 
 		const data = {
 			data: [{
-			Name: document.getElementById('name').value,
-			Guests: document.getElementById('guests').value,
-			Attending: document.getElementById('attending').value,
-			Message: document.getElementById('message').value
+				Timestamp: new Date().toISOString(), // ISO timestamp
+				Name: document.getElementById('name').value,
+				Guests: document.getElementById('guests').value,
+				Attending: document.getElementById('attending').value,
+				Message: document.getElementById('message').value
 			}]
 		};
+
 
 		fetch(SHEETDB_URL, {
 			method: 'POST',

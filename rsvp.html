@@ -50,14 +50,49 @@
 		<script src="assets/js/main.js"></script>
 		<script>
 			fetch('navbar.html')
-			.then(response => response.text())
-			.then(data => document.getElementById('navbar').innerHTML = data);
+				.then(response => response.text())
+				.then(data => {
+				document.getElementById('navbar').innerHTML = data;
+				// Re-initialize dropotron after navbar is inserted
+				if (window.jQuery && typeof jQuery.fn.dropotron !== 'undefined') {
+					jQuery('#nav > ul').dropotron({
+					alignment: 'center'
+					});
+				}
+				});
 		</script>
 		<script>
 			fetch('footer.html')
 			.then(response => response.text())
 			.then(data => document.getElementById('footerbar').innerHTML = data);
 		</script>
+		<script>
+			const form = document.getElementById("rsvpForm");
+			const successMsg = document.getElementById("successMsg");
 
+			form.addEventListener("submit", function(event) {
+				event.preventDefault();
+
+				const data = {
+				name: document.getElementById("name").value,
+				guests: document.getElementById("guests").value,
+				attending: document.getElementById("attending").value,
+				message: document.getElementById("message").value
+				};
+
+				fetch("YOUR_GOOGLE_SCRIPT_URL_HERE", {
+				method: "POST",
+				body: JSON.stringify(data),
+				headers: { "Content-Type": "application/json" }
+				})
+				.then(response => response.text())
+				.then(text => {
+				console.log("Server response:", text);
+				successMsg.style.display = "block";
+				form.reset();
+				})
+				.catch(error => console.error("Error!", error));
+			});
+		</script>
 	</body>
 </html>

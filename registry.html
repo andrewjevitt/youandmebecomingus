@@ -50,8 +50,16 @@
 		<script src="assets/js/main.js"></script>
 		<script>
 			fetch('navbar.html')
-			.then(response => response.text())
-			.then(data => document.getElementById('navbar').innerHTML = data);
+				.then(response => response.text())
+				.then(data => {
+				document.getElementById('navbar').innerHTML = data;
+				// Re-initialize dropotron after navbar is inserted
+				if (window.jQuery && typeof jQuery.fn.dropotron !== 'undefined') {
+					jQuery('#nav > ul').dropotron({
+					alignment: 'center'
+					});
+				}
+				});
 		</script>
 		<script>
 			fetch('footer.html')

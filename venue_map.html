@@ -5,7 +5,17 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+		<style>
+			#map {
+			height: 400px; /* adjust size */
+			width: 100%;
+			border-radius: 16px;
+			box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+			}
+		</style>
 	</head>
+	
 	<body class="is-preload">
 		<div id="page-wrapper">
 
@@ -18,21 +28,8 @@
 						<h2>Map for the Venue</h2>
 						<p>Here is where you can find directions to the wedding.</p>
 					</header>
-					<div class="box">
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-						<h3>This is a subheading</h3>
-						<p>Cep risus aliquam gravida cep ut lacus amet. Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae ante vestibulum ante. Blandit. Ante accumsan nisi eu placerat gravida placerat adipiscing in risus fusce vitae ac mi accumsan nunc in accumsan tempor blandit aliquet aliquet lobortis. Ultricies blandit lobortis praesent turpis. Adipiscing accumsan adipiscing adipiscing ac lacinia cep. Orci blandit a iaculis adipiscing ac. Vivamus ornare laoreet odio vis praesent nunc lorem mi. Erat. Tempus sem faucibus ac id. Vis in blandit. Nascetur ultricies blandit ac. Arcu aliquam. Accumsan mi eget adipiscing nulla. Non vestibulum ac interdum condimentum semper commodo massa arcu.</p>
-						<div class="row">
-							<div class="row-6 row-12-mobilep">
-								<h3>And now a subheading</h3>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
-							<div class="row-6 row-12-mobilep">
-								<h3>And another subheading</h3>
-								<p>Adipiscing faucibus nunc placerat. Tempus adipiscing turpis non blandit accumsan eget lacinia nunc integer interdum amet aliquam ut orci non col ut ut praesent. Semper amet interdum mi. Phasellus enim laoreet ac ac commodo faucibus faucibus. Curae lorem ipsum adipiscing ac. Vivamus ornare laoreet odio vis praesent.</p>
-							</div>
-						</div>
-					</div>
+					
+					<div id="map"></div>
 				</section>
 
 			<!-- Footer -->
@@ -50,14 +47,37 @@
 		<script src="assets/js/main.js"></script>
 		<script>
 			fetch('navbar.html')
-			.then(response => response.text())
-			.then(data => document.getElementById('navbar').innerHTML = data);
+				.then(response => response.text())
+				.then(data => {
+				document.getElementById('navbar').innerHTML = data;
+				// Re-initialize dropotron after navbar is inserted
+				if (window.jQuery && typeof jQuery.fn.dropotron !== 'undefined') {
+					jQuery('#nav > ul').dropotron({
+					alignment: 'center'
+					});
+				}
+				});
 		</script>
 		<script>
 			fetch('footer.html')
 			.then(response => response.text())
 			.then(data => document.getElementById('footerbar').innerHTML = data);
 		</script>
+		<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+		<script>
+			// Set map center and zoom (latitude, longitude, zoom level)
+			const map = L.map('map').setView([40.373776779901064, -76.84832349445755], 13); // Example: NYC
 
+			// Add tile layer (pretty map tiles from OpenStreetMap)
+			L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+			}).addTo(map);
+
+			// Add a marker at the location
+			L.marker([40.373776779901064, -76.84832349445755])
+			.addTo(map)
+			.bindPopup('<b>The Manor at Mountainview</b><br><a href="https://www.google.com/maps/place/The+Manor+at+Mountain+View/@40.3735847,-76.8485488,12z/data=!4m6!3m5!1s0x89c8c95390f69e43:0xcb80859558bcb963!8m2!3d40.3735847!4d-76.8485488!16s%2Fg%2F11jnnz1rxs?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D">2201 Fishing Creek Valley Road,<br>Harrisburg, PA 17112</a>')
+			.openPopup();
+		</script>
 	</body>
 </html>

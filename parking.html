@@ -60,7 +60,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li><a href="rsvp.html" class="button">RSVP</a></li>
                     </ul>
                 </nav>
@@ -111,7 +111,7 @@
             // Set map center and zoom (latitude, longitude, zoom level)
             const map = L.map("map").setView(
                 [40.373776779901064, -76.84832349445755],
-                13,
+                10,
             ); // Example: NYC
 
             // Add tile layer (pretty map tiles from OpenStreetMap)
@@ -127,7 +127,7 @@
             L.marker([40.373776779901064, -76.84832349445755])
                 .addTo(map)
                 .bindPopup(
-                    '<b>The Manor at Mountainview</b><br><a href="https://www.google.com/maps/place/The+Manor+at+Mountain+View/@40.3735847,-76.8485488,12z/data=!4m6!3m5!1s0x89c8c95390f69e43:0xcb80859558bcb963!8m2!3d40.3735847!4d-76.8485488!16s%2Fg%2F11jnnz1rxs?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D">2201 Fishing Creek Valley Road,<br>Harrisburg, PA 17112</a>',
+                    '<b>The Manor at Mountain View</b><br><a href="https://www.google.com/maps/place/The+Manor+at+Mountain+View/@40.3735847,-76.8485488,12z/data=!4m6!3m5!1s0x89c8c95390f69e43:0xcb80859558bcb963!8m2!3d40.3735847!4d-76.8485488!16s%2Fg%2F11jnnz1rxs?entry=ttu&g_ep=EgoyMDI1MDgyNS4wIKXMDSoASAFQAw%3D%3D">2201 Fishing Creek Valley Road,<br>Harrisburg, PA 17112</a>',
                 )
                 .openPopup();
         </script>

@@ -1,71 +1,79 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Generic - Alpha by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
-		<div id="page-wrapper">
+    <head>
+        <title>Generic - Alpha by HTML5 UP</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+            <!-- Header -->
+            <div id="navbar"></div>
 
-			<!-- Header -->
-				<div id="navbar"></div>
+            <!-- Main -->
+            <section id="main" class="container">
+                <header>
+                    <h2>Generic</h2>
+                    <p>A generic page for every non-generic situation.</p>
+                </header>
+                <div class="box">
+                    <span class="image featured"
+                        ><img src="images/pic01.jpg" alt=""
+                    /></span>
+                    <h3>This is a subheading</h3>
+                    <p>PLACEHOLDER TEXT</p>
+                    <div class="row">
+                        <div class="row-6 row-12-mobilep">
+                            <h3>And now a subheading</h3>
+                            <p>PLACEHOLDER TEXT</p>
+                        </div>
+                        <div class="row-6 row-12-mobilep">
+                            <h3>And another subheading</h3>
+                            <p>PLACEHOLDER TEXT</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-			<!-- Main -->
-				<section id="main" class="container">
-					<header>
-						<h2>Generic</h2>
-						<p>A generic page for every non-generic situation.</p>
-					</header>
-					<div class="box">
-						<span class="image featured"><img src="images/pic01.jpg" alt="" /></span>
-						<h3>This is a subheading</h3>
-						<p>PLACHOLDER TEXT</p>
-						<div class="row">
-							<div class="row-6 row-12-mobilep">
-								<h3>And now a subheading</h3>
-								<p>PLACHOLDER TEXT</p>
-							</div>
-							<div class="row-6 row-12-mobilep">
-								<h3>And another subheading</h3>
-								<p>PLACHOLDER TEXT</p>
-							</div>
-						</div>
-					</div>
-				</section>
+            <!-- Footer -->
+            <div id="footerbar"></div>
+        </div>
 
-			<!-- Footer -->
-				<div id="footerbar"></div>
-
-		</div>
-
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.dropotron.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
-		<script>
-			fetch('navbar.html')
-				.then(response => response.text())
-				.then(data => {
-				document.getElementById('navbar').innerHTML = data;
-				// Re-initialize dropotron after navbar is inserted
-				if (window.jQuery && typeof jQuery.fn.dropotron !== 'undefined') {
-					jQuery('#nav > ul').dropotron({
-					alignment: 'center'
-					});
-				}
-				});
-		</script>
-		<script>
-			fetch('footer.html')
-			.then(response => response.text())
-			.then(data => document.getElementById('footerbar').innerHTML = data);
-		</script>
-
-	</body>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script>
+            fetch("navbar.html")
+                .then((response) => response.text())
+                .then((data) => {
+                    document.getElementById("navbar").innerHTML = data;
+                    // Re-initialize dropotron after navbar is inserted
+                    if (
+                        window.jQuery &&
+                        typeof jQuery.fn.dropotron !== "undefined"
+                    ) {
+                        jQuery("#nav > ul").dropotron({
+                            alignment: "center",
+                        });
+                    }
+                });
+        </script>
+        <script>
+            fetch("footer.html")
+                .then((response) => response.text())
+                .then(
+                    (data) =>
+                        (document.getElementById("footerbar").innerHTML = data),
+                );
+        </script>
+    </body>
 </html>

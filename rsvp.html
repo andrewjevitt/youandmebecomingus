@@ -1,171 +1,221 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
-  <head>
-    <title>Chloe & Andrew's Wedding</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <style>
-      form {
-        max-width: 600px;
-        margin: auto;
-      }
-      label {
-        font-weight: bold;
-      }
-      input, select, textarea {
-        width: 100%;
-        padding: 0.6em;
-        margin: 0.4em 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-      }
-      button {
-        background: #a94442;
-        color: #fff;
-        padding: 0.7em 1.2em;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-      button:hover {
-        background: #922d2d;
-      }
-      #successMsg {
-        display: none;
-        margin-top: 1em;
-        color: green;
-        font-weight: bold;
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body class="is-preload">
-    <div id="page-wrapper">
+    <head>
+        <title>Chloe & Andrew's Wedding</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=no"
+        />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <style>
+            form {
+                max-width: 600px;
+                margin: auto;
+            }
+            label {
+                font-weight: bold;
+            }
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 0.6em;
+                margin: 0.4em 0;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+            }
+            button {
+                background: #a94442;
+                color: #fff;
+                padding: 0.7em 1.2em;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }
+            button:hover {
+                background: #922d2d;
+            }
+            #successMsg {
+                display: none;
+                margin-top: 1em;
+                color: green;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+        <div id="page-wrapper">
+            <!-- Header -->
+            <header id="header">
+                <h1><a href="index.html">You & Me Becoming Us</a></h1>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="how_we_met.html">Our Story</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="registry.html">Registry</a></li>
+                        <li>
+                            <a href="#" class="icon solid fa-angle-down"
+                                >Wedding Details</a
+                            >
+                            <ul>
+                                <li>
+                                    <a href="us_in_another_universe.html"
+                                        >Us in Another Universe</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="venue_map.html"
+                                        >Wedding Location</a
+                                    >
+                                </li>
+                                <li><a href="donate.html">Donations</a></li>
+                                <li>
+                                    <a href="invites.html">Extra Invites</a>
+                                </li>
+                                <li>
+                                    <a href="wedding_party.html"
+                                        >The Wedding Party</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="#">Accomodations</a>
+                                    <ul>
+                                        <li><a href="#">The Marriot</a></li>
+                                        <li><a href="#">Lancaster Inn</a></li>
+                                        <li><a href="#">AirBnB</a></li>
+                                        <li><a href="#">Local Motel</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="rsvp.html" class="button">RSVP</a></li>
+                    </ul>
+                </nav>
+            </header>
 
-      	<!-- Header -->
-		<header id="header">
-			<h1><a href="index.html">You & Me Becoming Us</a></h1>
-			<nav id="nav">
-				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="how_we_met.html">Our Story</a></li>
-					<li><a href="schedule.html">Schedule</a></li>
-					<li><a href="registry.html">Registry</a></li>
-					<li>
-						<a href="#" class="icon solid fa-angle-down">Wedding Details</a>
-						<ul>
-							<li><a href="us_in_another_universe.html">Us in Another Universe</a></li>
-							<li><a href="venue_map.html">Wedding Location</a></li>
-							<li><a href="donate.html">Donations</a></li>
-							<li><a href="invites.html">Extra Invites</a></li>
-							<li><a href="wedding_party.html">The Wedding Party</a></li>
-							<li>
-								<a href="#">Accomodations</a>
-								<ul>
-									<li><a href="#">The Marriot</a></li>
-									<li><a href="#">Lancaster Inn</a></li>
-									<li><a href="#">AirBnB</a></li>
-									<li><a href="#">Local Motel</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="rsvp.html" class="button">RSVP</a></li>
-				</ul>
-			</nav>
-		</header>
+            <!-- Main -->
+            <section id="main" class="container">
+                <header>
+                    <h2>RSVP</h2>
+                    <p>
+                        Please fill out the form below to let us know if you’ll
+                        be joining us.
+                    </p>
+                </header>
 
-      <!-- Main -->
-      <section id="main" class="container">
-        <header>
-          <h2>RSVP</h2>
-          <p>Please fill out the form below to let us know if you’ll be joining us.</p>
-        </header>
+                <div class="box">
+                    <form id="rsvpForm">
+                        <label for="name">Your Name(s)</label>
+                        <input type="text" id="name" name="name" required />
 
-        <div class="box">
-          	<form id="rsvpForm">
-				<label for="name">Your Name(s)</label>
-				<input type="text" id="name" name="name" required>
+                        <label for="guests">Number of Guests</label>
+                        <input
+                            type="number"
+                            id="guests"
+                            name="guests"
+                            min="1"
+                            required
+                        />
 
-				<label for="guests">Number of Guests</label>
-				<input type="number" id="guests" name="guests" min="1" required>
+                        <label for="attending">Will you attend?</label>
+                        <select id="attending" name="attending" required>
+                            <option value="">Select</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
 
-				<label for="attending">Will you attend?</label>
-				<select id="attending" name="attending" required>
-					<option value="">Select</option>
-					<option value="Yes">Yes</option>
-					<option value="No">No</option>
-				</select>
+                        <label for="food"
+                            >What meal would you like for dinner?</label
+                        >
+                        <select id="food" name="food" required>
+                            <option value="">Select</option>
+                            <option value="beef">Beef</option>
+                            <option value="pork">Pork</option>
+                            <option value="chicken">Chicken</option>
+                        </select>
 
-				<label for="message">Message (optional)</label>
-				<textarea id="message" name="message"></textarea>
+                        <label for="message"
+                            >Message for the Bride and Groom (optional)</label
+                        >
+                        <textarea id="message" name="message"></textarea>
 
-				<button type="submit">Submit RSVP</button>
-			</form>
+                        <button type="submit">Submit RSVP</button>
+                    </form>
 
-			<p id="successMsg" style="display:none;color:green;">Thank you! RSVP recorded.</p>
+                    <p id="successMsg" style="display: none; color: green">
+                        Thank you! RSVP recorded.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div id="footerbar"></div>
         </div>
-      </section>
 
-      <!-- Footer -->
-      <div id="footerbar"></div>
-    </div>
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.dropotron.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.dropotron.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+        <!-- Load Footer -->
+        <script>
+            fetch("footer.html")
+                .then((response) => response.text())
+                .then(
+                    (data) =>
+                        (document.getElementById("footerbar").innerHTML = data),
+                );
+        </script>
 
-    <!-- Load Footer -->
-    <script>
-      fetch('footer.html')
-        .then(response => response.text())
-        .then(data => document.getElementById('footerbar').innerHTML = data);
-    </script>
+        <!-- RSVP Submission Script -->
+        <script>
+            const form = document.getElementById("rsvpForm");
+            const successMsg = document.getElementById("successMsg");
 
-    <!-- RSVP Submission Script -->
-    <script>
-		const form = document.getElementById('rsvpForm');
-		const successMsg = document.getElementById('successMsg');
+            // Replace this with your SheetDB API URL
+            const SHEETDB_URL = "https://sheetdb.io/api/v1/1fw56c0buukmi";
 
-		// Replace this with your SheetDB API URL
-		const SHEETDB_URL = 'https://sheetdb.io/api/v1/1fw56c0buukmi';
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
 
-		form.addEventListener('submit', function(e) {
-		e.preventDefault();
+                const data = {
+                    data: [
+                        {
+                            Timestamp: new Date().toISOString(), // ISO timestamp
+                            Name: document.getElementById("name").value,
+                            Guests: document.getElementById("guests").value,
+                            Attending:
+                                document.getElementById("attending").value,
+                            Message: document.getElementById("message").value,
+                        },
+                    ],
+                };
 
-		const data = {
-			data: [{
-				Timestamp: new Date().toISOString(), // ISO timestamp
-				Name: document.getElementById('name').value,
-				Guests: document.getElementById('guests').value,
-				Attending: document.getElementById('attending').value,
-				Message: document.getElementById('message').value
-			}]
-		};
-
-
-		fetch(SHEETDB_URL, {
-			method: 'POST',
-			body: JSON.stringify(data),
-			headers: { 'Content-Type': 'application/json' }
-		})
-		.then(res => res.json())
-		.then(res => {
-			successMsg.style.display = 'block';
-			form.reset();
-			console.log('RSVP recorded:', res);
-		})
-		.catch(err => {
-			console.error('Error submitting RSVP:', err);
-			alert('Sorry, there was an error. Please try again later.');
-		});
-		});
-	</script>
-  </body>
+                fetch(SHEETDB_URL, {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: { "Content-Type": "application/json" },
+                })
+                    .then((res) => res.json())
+                    .then((res) => {
+                        successMsg.style.display = "block";
+                        form.reset();
+                        console.log("RSVP recorded:", res);
+                    })
+                    .catch((err) => {
+                        console.error("Error submitting RSVP:", err);
+                        alert(
+                            "Sorry, there was an error. Please try again later.",
+                        );
+                    });
+            });
+        </script>
+    </body>
 </html>
